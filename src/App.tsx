@@ -1,8 +1,9 @@
-import { MouseEvent } from 'react';
+import { MouseEvent, useState } from 'react';
 import moment from 'moment';
-import { CgCalendarToday } from 'react-icons/cg';
+
+import ReactLoading from 'react-loading';
 import Tooltip from 'rc-tooltip/lib/Tooltip';
-import 'rc-tooltip/assets/bootstrap.css';
+import 'rc-tooltip/assets/bootstrap_white.css';
 
 import { publishTheCalenderEvent } from './services/googleServices';
 
@@ -21,6 +22,7 @@ const isPartyDay = (day: number | string) => {
 };
 
 function App() {
+  const [loading, setLoading] = useState(false);
   const dates = [
     {
       day: 18,
@@ -46,6 +48,8 @@ function App() {
 
   const createEvent = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
+    setLoading(true);
+
     const event = {
       summary: SUMMARY,
       location: LOCATION,
@@ -68,32 +72,38 @@ function App() {
       },
     };
     publishTheCalenderEvent(event);
+
+    setTimeout(() => {
+      window.open('https://calendar.google.com/calendar/u/0/r/day/2022/11/20');
+      setLoading(false);
+    }, 1000);
   };
 
   return (
     <div className="App">
       <div className="container mx-auto flex min-h-screen flex-col items-center justify-center">
         <div>
-          <h1 className="my-4 text-6xl font-black leading-normal">
+          <h1 className="my-8 text-6xl font-black leading-normal">
             Aniversário da <span className="text-purple-600">Lyn</span>
           </h1>
 
           <GoogleLogin />
 
-          <div className="my-4 flex flex-col">
-            <div className="flex flex-row justify-between">
-              <div className="flex flex-col items-start justify-start self-start">
-                <div className="text-sm text-neutral-500">Salve a data</div>
-                <div className="text-xl font-bold">20 de Nov, 2022</div>
-              </div>
-              <div className="flex cursor-pointer flex-col items-end justify-center" onClick={createEvent}>
-                <Tooltip placement="left" showArrow={false} overlay={<span>Adicione no seu calendário</span>}>
-                  <CgCalendarToday className="text-5xl" />
+          <div className="my-12 flex flex-col">
+            <div className="flex flex-row">
+              {loading ? (
+                <ReactLoading className="ml-12" type="bubbles" color="#404040" height={48} width={48} />
+              ) : (
+                <Tooltip placement="top" showArrow={false} overlay={<span>Adicione no seu calendário</span>}>
+                  <div className="flex cursor-pointer flex-col" onClick={createEvent}>
+                    <div className="text-sm text-neutral-500">Clique para salvar</div>
+                    <div className="text-xl font-bold">20 de Nov, 2022</div>
+                  </div>
                 </Tooltip>
-              </div>
+              )}
             </div>
 
-            <div className="my-4 flex flex-row justify-between">
+            <div className="my-8 flex flex-row justify-between">
               {dates.map((d) => (
                 <div
                   key={d.day}

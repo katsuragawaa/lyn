@@ -49,7 +49,7 @@ export const GoogleLogin = () => {
             </span>
           </div>
           <button
-            className="border border-neutral-700 px-2 hover:border-purple-700 hover:text-purple-700"
+            className="border border-neutral-700 px-2 transition delay-300 ease-in-out hover:border-purple-700 hover:text-purple-700"
             onClick={signOut}
           >
             Sair
