@@ -1,28 +1,11 @@
-import { MouseEvent, useState } from 'react';
-import moment from 'moment';
-
-import ReactLoading from 'react-loading';
-import Tooltip from 'rc-tooltip/lib/Tooltip';
-import 'rc-tooltip/assets/bootstrap_white.css';
-
-import { publishTheCalenderEvent } from './services/googleServices';
-
 import { GoogleLogin } from './components/GoogleLogin';
-
-const SUMMARY = "Evelyn' Party";
-const DESCRIPTION = 'VEM PRA FESTA';
-const LOCATION = 'Rua Coronel Ottoni Maciel, 741 - Vila Izabel, Curitiba - PR, 80320-000';
-const PARTY_START = moment('2022-11-20T16:00');
-const PARTY_END = moment('2022-11-20T23:59');
-const BR_ZONE = 'America/Sao_Paulo';
-const PURPLE_COLOR_ID = '3';
+import { SaveDate } from './components/SaveDate';
 
 const isPartyDay = (day: number | string) => {
   return typeof day !== 'string' && day === 20;
 };
 
 function App() {
-  const [loading, setLoading] = useState(false);
   const dates = [
     {
       day: 18,
@@ -46,39 +29,6 @@ function App() {
     },
   ];
 
-  const createEvent = (e: MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    setLoading(true);
-
-    const event = {
-      summary: SUMMARY,
-      location: LOCATION,
-      description: DESCRIPTION,
-      colorId: PURPLE_COLOR_ID,
-      start: {
-        dateTime: PARTY_START,
-        locale: BR_ZONE,
-      },
-      end: {
-        dateTime: PARTY_END,
-        timeZone: BR_ZONE,
-      },
-      reminders: {
-        useDefault: false,
-        overrides: [
-          { method: 'email', minutes: 6 * 60 },
-          { method: 'popup', minutes: 60 },
-        ],
-      },
-    };
-    publishTheCalenderEvent(event);
-
-    setTimeout(() => {
-      window.open('https://calendar.google.com/calendar/u/0/r/day/2022/11/20');
-      setLoading(false);
-    }, 1000);
-  };
-
   return (
     <div className="App">
       <div className="container mx-auto flex min-h-screen flex-col items-center justify-center">
@@ -90,18 +40,7 @@ function App() {
           <GoogleLogin />
 
           <div className="my-12 flex flex-col">
-            <div className="flex flex-row">
-              {loading ? (
-                <ReactLoading className="ml-12" type="bubbles" color="#404040" height={48} width={48} />
-              ) : (
-                <Tooltip placement="top" showArrow={false} overlay={<span>Adicione no seu calendário</span>}>
-                  <div className="flex cursor-pointer flex-col" onClick={createEvent}>
-                    <div className="text-sm text-neutral-500">Clique para salvar</div>
-                    <div className="text-xl font-bold">20 de Nov, 2022</div>
-                  </div>
-                </Tooltip>
-              )}
-            </div>
+            <SaveDate />
 
             <div className="my-8 flex flex-row justify-between">
               {dates.map((d) => (
@@ -125,9 +64,8 @@ function App() {
             </div>
           </div>
         </div>
-        <div>Gerador de sugestões de presentes</div>
 
-        <div className="m-12 flex h-40 w-full items-center justify-center rounded-xl bg-gray-300">placeholder</div>
+        <div>Gerador de sugestões de presentes</div>
       </div>
     </div>
   );
