@@ -2,7 +2,6 @@ import { useState } from 'react';
 import ReactLoading from 'react-loading';
 import { Calendar } from './components/Calendar';
 import { GoogleLogin } from './components/GoogleLogin';
-import { SaveDate } from './components/SaveDate';
 
 import { Item, GIFT_SUGGESTIONS, GiftSuggestion } from './services/giftSuggestions';
 
@@ -42,20 +41,16 @@ function App() {
 
   return (
     <div className="App">
-      <div className="container mx-auto my-20 flex min-h-screen flex-col items-center justify-center">
+      <div className="container mx-auto my-20 flex min-h-screen flex-col items-center">
         <div>
           <h1 className="my-8 text-6xl font-black leading-normal">
             Aniversário da <span className="text-purple-600">Lyn</span>
           </h1>
 
           <GoogleLogin />
+          <Calendar />
 
-          <div className="my-12 flex flex-col">
-            <SaveDate />
-            <Calendar />
-          </div>
-
-          <div className="mb-12 flex justify-center">
+          <div className="my-12 flex justify-center">
             <div className="w-fit cursor-pointer bg-neutral-700 py-2 px-4 text-white" onClick={getNewSuggestion}>
               {gift ? 'Me da outra ideia' : 'Gerar sugestão'}
             </div>

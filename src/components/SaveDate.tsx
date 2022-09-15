@@ -30,7 +30,7 @@ const EVENT_INFO = {
   },
 };
 
-export const SaveDate = () => {
+export const SaveDate = ({ signedIn }: { signedIn: boolean }) => {
   const [loading, setLoading] = useState(false);
 
   const createEvent = (e: MouseEvent<HTMLDivElement>) => {
@@ -45,6 +45,8 @@ export const SaveDate = () => {
     }, 1000);
   };
 
+  const tooltipText = signedIn ? 'Adicione no seu calendário' : 'Vou criar um evento no seu calendário';
+
   return (
     <div className="flex flex-row">
       {loading ? (
@@ -53,11 +55,18 @@ export const SaveDate = () => {
           <ReactLoading className="ml-12" type="bubbles" color="#404040" height={28} width={40} />
         </div>
       ) : (
-        <Tooltip placement="top" showArrow={false} overlay={<span>Adicione no seu calendário</span>}>
-          <div className="flex cursor-pointer flex-col" onClick={createEvent}>
-            <div className="text-sm text-neutral-500">Clique para salvar</div>
-            <div className="text-xl font-bold">20 de Nov, 2022</div>
-          </div>
+        <Tooltip placement="top" showArrow={false} overlay={<span>{tooltipText}</span>}>
+          {signedIn ? (
+            <div className="flex cursor-pointer flex-col" onClick={createEvent}>
+              <div className="text-sm text-neutral-500">Clique para salvar</div>
+              <div className="text-xl font-bold">20 de Nov, 2022</div>
+            </div>
+          ) : (
+            <div className="flex flex-col">
+              <div className="text-sm text-neutral-500">Faça login para salvar</div>
+              <div className="text-xl font-bold">20 de Nov, 2022</div>
+            </div>
+          )}
         </Tooltip>
       )}
     </div>

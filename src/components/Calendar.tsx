@@ -27,7 +27,7 @@ export const Calendar = () => {
   ];
 
   return (
-    <>
+    <div className="flex flex-col">
       <div className="my-8 flex flex-row justify-between">
         {dates.map((d) => (
           <div
@@ -47,6 +47,6 @@ export const Calendar = () => {
         <div>* O aniversário dela é no dia 21</div>
         <div>mas a festinha vai ser no dia 20</div>
       </div>
-    </>
+    </div>
   );
 };
