@@ -274,4 +274,14 @@ export const GIFT_SUGGESTIONS: GiftSuggestion[] = [
     description: 'Hehe',
     priceRange: 'Any troco',
   },
+  {
+    category: 'Vale Tattoo',
+    description: 'Hehe',
+    priceRange: 'Any troco',
+  },
+  {
+    category: 'Vale Tattoo',
+    description: 'Hehe',
+    priceRange: 'Any troco',
+  },
 ];
