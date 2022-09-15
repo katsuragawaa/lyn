@@ -41,7 +41,7 @@ export const App = () => {
 
   return (
     <div className="App">
-      <div className="container mx-auto my-20 flex min-h-screen flex-col items-center">
+      <div className="container mx-auto my-32 flex min-h-screen flex-col items-center">
         <div>
           <h1 className="my-8 text-6xl font-black leading-normal">
             Aniversário da <span className="text-purple-600">Lyn</span>
@@ -50,7 +50,7 @@ export const App = () => {
           <GoogleLogin />
           <Calendar />
 
-          <div className="my-12 flex justify-center">
+          <div className="mb-12 mt-24 flex justify-center">
             <div className="w-fit cursor-pointer bg-neutral-700 py-2 px-4 text-white" onClick={getNewSuggestion}>
               {gift ? 'Me da outra ideia' : 'Gerar sugestão'}
             </div>
@@ -72,7 +72,7 @@ export const App = () => {
                 <div className="my-4 text-4xl font-bold">{gift.category}</div>
 
                 <div className="my-4">
-                  <div className="text-sm">O que a Lyn diz sobre:</div>
+                  <div className="text-sm">O que a Lyn disse:</div>
                   <div className="flex py-2">
                     <div className="mr-4 w-1 bg-neutral-700" />
                     <div className="py-1">"{gift.description}"</div>
