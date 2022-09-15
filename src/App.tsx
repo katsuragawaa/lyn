@@ -27,7 +27,7 @@ const TattooSuggestion = () => (
 
 const getRandomGift = () => GIFT_SUGGESTIONS[Math.floor(Math.random() * GIFT_SUGGESTIONS.length)];
 
-function App() {
+export const App = () => {
   const [gift, setGift] = useState<GiftSuggestion | undefined>();
   const [shuffling, setShuffling] = useState(false);
 
@@ -87,6 +87,4 @@ function App() {
       </div>
     </div>
   );
-}
-
-export default App;
+};
