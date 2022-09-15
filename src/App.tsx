@@ -67,7 +67,7 @@ function App() {
             </div>
           ) : (
             gift && (
-              <div className="flex flex-col border-2 border-neutral-700 bg-gradient-to-br from-purple-100 to-purple-200 p-8">
+              <div className="flex flex-col border-2 border-neutral-700 bg-gradient-to-br from-purple-100 to-purple-300 p-8">
                 <div className="mb-4 w-fit border-2 border-neutral-700 bg-yellow-200 py-1 px-2 text-sm font-bold">
                   {typeof gift.priceRange === 'string'
                     ? gift.priceRange
