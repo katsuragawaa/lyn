@@ -41,9 +41,9 @@ export const App = () => {
 
   return (
     <div className="App">
-      <div className="container mx-auto my-32 flex min-h-screen flex-col items-center">
-        <div>
-          <h1 className="my-8 text-6xl font-black leading-normal">
+      <div className="container mx-auto my-16 flex min-h-screen flex-col items-center md:my-32">
+        <div className="w-5/6 md:w-[540px]">
+          <h1 className="my-8 text-center text-4xl font-black leading-normal md:text-6xl">
             Aniversário da <span className="text-purple-600">Lyn</span>
           </h1>
 
