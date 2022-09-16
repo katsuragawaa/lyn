@@ -1,30 +1,10 @@
 import { useState } from 'react';
-import ReactLoading from 'react-loading';
 import { Calendar } from './components/Calendar';
+import { GiftSuggestionCard } from './components/GiftSuggestionCard';
 import { GoogleLogin } from './components/GoogleLogin';
 import { SuggestionButton } from './components/SuggestionButton';
 
-import { Item, GIFT_SUGGESTIONS, GiftSuggestion } from './services/giftSuggestions';
-
-const GiftSuggestions = ({ items }: { items: Item[] }) => (
-  <>
-    <div className="my-2 font-bold">Algumas sugestões:</div>
-    {items.map((i) => (
-      <div className="my-1 text-purple-700" key={i.id}>
-        <span className="mr-4 font-bold">•</span>
-        <a className="underline" href={i.link} target="_blank">
-          {i.name}
-        </a>
-      </div>
-    ))}
-  </>
-);
-
-const TattooSuggestion = () => (
-  <>
-    <div className="mx-auto mt-4 flex h-48 w-48 items-center justify-center bg-white">Pix</div>
-  </>
-);
+import { GIFT_SUGGESTIONS, GiftSuggestion } from './services/giftSuggestions';
 
 const getRandomGift = () => GIFT_SUGGESTIONS[Math.floor(Math.random() * GIFT_SUGGESTIONS.length)];
 
@@ -53,33 +33,7 @@ export const App = () => {
 
           <SuggestionButton hasSuggestion={gift !== undefined} getNewSuggestion={getNewSuggestion} />
 
-          {shuffling ? (
-            <div className="flex h-48 items-center justify-center">
-              <ReactLoading type="spinningBubbles" color="#404040" height={64} width={64} />
-            </div>
-          ) : (
-            gift && (
-              <div className="flex flex-col border-2 border-neutral-700 bg-gradient-to-br from-purple-100 to-purple-300 p-8">
-                <div className="mb-4 w-fit border-2 border-neutral-700 bg-yellow-200 py-1 px-2 text-sm font-bold">
-                  {typeof gift.priceRange === 'string'
-                    ? gift.priceRange
-                    : `${gift.priceRange.min} até ${gift.priceRange.max} pila`}
-                </div>
-
-                <div className="my-4 text-4xl font-bold">{gift.category}</div>
-
-                <div className="my-4">
-                  <div className="text-sm">O que a Lyn disse:</div>
-                  <div className="flex py-2">
-                    <div className="mr-4 w-1 bg-neutral-700" />
-                    <div className="py-1">"{gift.description}"</div>
-                  </div>
-                </div>
-
-                {gift.items !== undefined ? <GiftSuggestions items={gift.items} /> : <TattooSuggestion />}
-              </div>
-            )
-          )}
+          <GiftSuggestionCard shuffling={shuffling} gift={gift} />
         </div>
       </div>
     </div>
