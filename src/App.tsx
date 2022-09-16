@@ -2,6 +2,7 @@ import { useState } from 'react';
 import ReactLoading from 'react-loading';
 import { Calendar } from './components/Calendar';
 import { GoogleLogin } from './components/GoogleLogin';
+import { SuggestionButton } from './components/SuggestionButton';
 
 import { Item, GIFT_SUGGESTIONS, GiftSuggestion } from './services/giftSuggestions';
 
@@ -50,11 +51,7 @@ export const App = () => {
           <GoogleLogin />
           <Calendar />
 
-          <div className="mb-12 mt-24 flex justify-center">
-            <div className="w-fit cursor-pointer bg-neutral-700 py-2 px-4 text-white" onClick={getNewSuggestion}>
-              {gift ? 'Me da outra ideia' : 'Gerar sugestão'}
-            </div>
-          </div>
+          <SuggestionButton hasSuggestion={gift !== undefined} getNewSuggestion={getNewSuggestion} />
 
           {shuffling ? (
             <div className="flex h-48 items-center justify-center">
