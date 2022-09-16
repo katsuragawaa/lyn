@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { initClient, signInToGoogle, getSignedInUserName, signOutFromGoogle } from '../services/googleServices';
 import { SaveDate } from './SaveDate';
+import { IoPersonCircleOutline } from 'react-icons/io5';
 
 export const GoogleLogin = () => {
   const [signedIn, setSignedIn] = useState(false);
@@ -42,10 +43,13 @@ export const GoogleLogin = () => {
       <div className="mb-12 flex flex-row justify-between">
         {signedIn ? (
           <>
-            <div>
-              Olá{' '}
-              <span className="underline decoration-purple-500 decoration-solid decoration-1 underline-offset-1">
-                {userName}
+            <div className="flex items-center">
+              <IoPersonCircleOutline className="text-2xl" />
+              <span className="ml-2">
+                Olá{' '}
+                <span className="underline decoration-purple-500 decoration-solid decoration-1 underline-offset-1">
+                  {userName}
+                </span>
               </span>
             </div>
             <button
