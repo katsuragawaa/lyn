@@ -3,7 +3,7 @@ import { initClient, signInToGoogle, getSignedInUserName, signOutFromGoogle } fr
 import { SaveDate } from './SaveDate';
 import { IoPersonCircleOutline } from 'react-icons/io5';
 
-export const GoogleLogin = () => {
+export const GoogleCreateEvent = () => {
   const [signedIn, setSignedIn] = useState(false);
   const [userName, setUserName] = useState('');
 
@@ -71,6 +71,7 @@ export const GoogleLogin = () => {
           </>
         )}
       </div>
+
       <SaveDate signedIn={signedIn} />
     </>
   );

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import SnackbarProvider from 'react-simple-snackbar';
 import { Calendar } from './components/Calendar';
 import { GiftSuggestionCard } from './components/GiftSuggestionCard';
-import { GoogleLogin } from './components/GoogleLogin';
+import { GoogleCreateEvent } from './components/GoogleCreateEvent';
 import { SuggestionButton } from './components/SuggestionButton';
 import { getRandomGift, GiftSuggestion } from './services/giftSuggestions';
 
@@ -27,8 +27,10 @@ export const App = () => {
               Aniversário da <span className="text-purple-600">Lyn</span>
             </h1>
 
-            <GoogleLogin />
+            <GoogleCreateEvent />
             <Calendar />
+
+
             <SuggestionButton hasSuggestion={gift !== undefined} getNewSuggestion={getNewSuggestion} />
             <GiftSuggestionCard shuffling={shuffling} gift={gift} />
           </div>
