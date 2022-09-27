@@ -285,3 +285,5 @@ export const GIFT_SUGGESTIONS: GiftSuggestion[] = [
     priceRange: 'Any troco',
   },
 ];
+
+export const getRandomGift = () => GIFT_SUGGESTIONS[Math.floor(Math.random() * GIFT_SUGGESTIONS.length)];

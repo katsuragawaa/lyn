@@ -3,10 +3,7 @@ import { Calendar } from './components/Calendar';
 import { GiftSuggestionCard } from './components/GiftSuggestionCard';
 import { GoogleLogin } from './components/GoogleLogin';
 import { SuggestionButton } from './components/SuggestionButton';
-
-import { GIFT_SUGGESTIONS, GiftSuggestion } from './services/giftSuggestions';
-
-const getRandomGift = () => GIFT_SUGGESTIONS[Math.floor(Math.random() * GIFT_SUGGESTIONS.length)];
+import { getRandomGift, GiftSuggestion } from './services/giftSuggestions';
 
 export const App = () => {
   const [gift, setGift] = useState<GiftSuggestion | undefined>();
@@ -30,9 +27,7 @@ export const App = () => {
 
           <GoogleLogin />
           <Calendar />
-
           <SuggestionButton hasSuggestion={gift !== undefined} getNewSuggestion={getNewSuggestion} />
-
           <GiftSuggestionCard shuffling={shuffling} gift={gift} />
         </div>
       </div>
