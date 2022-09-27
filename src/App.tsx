@@ -30,6 +30,10 @@ export const App = () => {
             <GoogleCreateEvent />
             <Calendar />
 
+            <div className="mt-12 mb-1 text-center text-2xl font-bold">
+              O tema do aniversário será <span className="text-purple-600">MEMES!</span>
+            </div>
+            <div className="text-center text-xs">Para mais informações por favor consultar a aniversariante.</div>
 
             <SuggestionButton hasSuggestion={gift !== undefined} getNewSuggestion={getNewSuggestion} />
             <GiftSuggestionCard shuffling={shuffling} gift={gift} />
