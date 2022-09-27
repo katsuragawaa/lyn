@@ -34,7 +34,7 @@ export const App = () => {
               O tema do aniversário será <span className="text-purple-600">MEMES!</span>
             </div>
             <div className="my-1 text-center text-xs">Para mais informações por favor consultar a aniversariante.</div>
-            <div className="text-center text-[6px]">Não sou pago para isso.</div>
+            <div className="text-center text-[5px]">Não sou pago para isso.</div>
 
             <SuggestionButton hasSuggestion={gift !== undefined} getNewSuggestion={getNewSuggestion} />
             <GiftSuggestionCard shuffling={shuffling} gift={gift} />
