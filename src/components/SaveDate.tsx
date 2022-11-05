@@ -14,11 +14,11 @@ const EVENT_INFO = {
   description: 'Rua Coronel Ottoni Maciel, 741 - Vila Izabel, Curitiba - PR, 80320-000',
   colorId: PURPLE_COLOR_ID,
   start: {
-    dateTime: moment('2022-11-20T16:00'),
+    dateTime: moment('2022-11-19T15:00'),
     locale: BR_ZONE,
   },
   end: {
-    dateTime: moment('2022-11-20T23:59'),
+    dateTime: moment('2022-11-19T23:59'),
     timeZone: BR_ZONE,
   },
   reminders: {
@@ -40,7 +40,7 @@ export const SaveDate = ({ signedIn }: { signedIn: boolean }) => {
     publishTheCalenderEvent(EVENT_INFO);
 
     setTimeout(() => {
-      window.open('https://calendar.google.com/calendar/u/0/r/day/2022/11/20');
+      window.open('https://calendar.google.com/calendar/u/0/r/day/2022/11/19');
       setLoading(false);
     }, 1000);
   };
@@ -59,12 +59,12 @@ export const SaveDate = ({ signedIn }: { signedIn: boolean }) => {
           {signedIn ? (
             <div className="flex cursor-pointer flex-col" onClick={createEvent}>
               <div className="text-sm text-neutral-500">Clique para salvar</div>
-              <div className="text-xl font-bold">20 de Nov, 2022</div>
+              <div className="text-xl font-bold">19 de Nov, 2022</div>
             </div>
           ) : (
             <div className="flex flex-col">
               <div className="text-sm text-neutral-500">Faça login para salvar</div>
-              <div className="text-xl font-bold">20 de Nov, 2022</div>
+              <div className="text-xl font-bold">19 de Nov, 2022</div>
             </div>
           )}
         </Tooltip>

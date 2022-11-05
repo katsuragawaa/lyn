@@ -1,9 +1,13 @@
 const isPartyDay = (day: number | string) => {
-  return typeof day !== 'string' && day === 20;
+  return typeof day !== 'string' && day === 19;
 };
 
 export const Calendar = () => {
   const dates = [
+    {
+      day: 17,
+      weekday: 'Quinta',
+    },
     {
       day: 18,
       weekday: 'Sexta',
@@ -19,10 +23,6 @@ export const Calendar = () => {
     {
       day: '21*',
       weekday: 'Segunda',
-    },
-    {
-      day: 22,
-      weekday: 'Terça',
     },
   ];
 
